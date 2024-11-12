@@ -67,4 +67,4 @@ const startServer = async () => {
     }
 }
 
-startSever()
+startServer()
