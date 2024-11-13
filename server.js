@@ -1,19 +1,22 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const dotenv = require('dotenv')
+
 dotenv.config();
 
 const app = express()
 const port = process.env.PORT || 3000
+
 app.use(express.json())
 
 const connections = {}
 const models = {}
-const bankUserSchema = new mongoose.Schema({})
+const grocerySchema = new mongoose.Schema({})
 
 const getConnection = async (dbName) => {
     console.log(`getConnection called with ${dbName}`)
-    if (!dbName in connections) {
+
+    if (!connections[dbName]) {
         connections[dbName] = await mongoose.createConnection(process.env.MONGO_URI, {
             dbName: dbName
         })
